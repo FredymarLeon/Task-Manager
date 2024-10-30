@@ -1,4 +1,4 @@
-package com.projetogrupo8.taskmanager.Activitys
+package com.projetogrupo8.taskmanager.activities
 
 import android.content.Intent
 import android.os.Bundle
