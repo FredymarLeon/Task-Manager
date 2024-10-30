@@ -10,4 +10,11 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="purple_200">#ffBB85FC</color>
+    <color name="color_work">#C911B4</color>
+    <color name="color_personal">#00BCD4</color>
+    <color name="color_business">#42E748</color>
+    <color name="color_study">#F1063B</color>
+    <color name="color_religion">#F1DC67</color>
+    <color name="color_other">#3AAC68</color>
+
 </resources>
