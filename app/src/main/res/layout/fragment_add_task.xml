@@ -5,14 +5,82 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="14dp"
-        android:orientation="vertical"
-        tools:context=".NewTaskFragment">
+        tools:context=".fragments.AddTaskFragment">
 
         <TextView
-            android:id="@+id/addTaskHeading"
+            android:id="@+id/selectCateg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_alignParentTop="true"
+            android:text="@string/select_category"
+            android:textColor="@color/blue_gray"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/rgCategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/selectCateg"
+            >
+
+                <RadioButton
+                    android:id="@+id/rbBusiness"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/color_business"
+                    android:checked="true"
+                    android:text="@string/categ_business"
+                    android:textColor="@color/dark_blue"/>
+
+                <RadioButton
+                    android:id="@+id/rbWork"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/color_work"
+                    android:text="@string/categ_work"
+                    android:textColor="@color/dark_blue"/>
+
+                <RadioButton
+                    android:id="@+id/rbPersonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/color_personal"
+                    android:text="@string/categ_personal"
+                    android:textColor="@color/dark_blue"/>
+
+                <RadioButton
+                    android:id="@+id/rbStudy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/color_study"
+                    android:text="@string/categ_study"
+                    android:textColor="@color/dark_blue"/>
+
+                <RadioButton
+                    android:id="@+id/rbReligion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/color_religion"
+                    android:text="@string/categ_religion"
+                    android:textColor="@color/dark_blue"/>
+
+                <RadioButton
+                    android:id="@+id/rbOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/color_other"
+                    android:text="@string/categ_other"
+                    android:textColor="@color/dark_blue"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/addTaskList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rgCategories"
             android:layout_marginTop="18dp"
             android:fontFamily="sans-serif-black"
             android:text="@string/add_task"
@@ -24,7 +92,7 @@
             android:id="@+id/addTaskTitle"
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            android:layout_below="@+id/addTaskHeading"
+            android:layout_below="@+id/addTaskList"
             android:layout_marginTop="16dp"
             android:gravity="top"
             android:hint="@string/enter_title"
@@ -37,12 +105,23 @@
             android:id="@+id/addTaskDescription"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/addTaskTitle"
             android:hint="@string/enter_description"
             android:gravity="top"
             android:padding="12dp"
             android:textSize="20sp"
-            android:layout_below="@id/addTaskTitle"
             android:background="@drawable/orange_border"
             android:layout_marginTop="12dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/editTaskFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginVertical="20dp"
+            android:backgroundTint="@color/orange"
+            android:src="@drawable/baseline_done_24"
+            android:tintMode="@color/white" />
 
 </RelativeLayout>

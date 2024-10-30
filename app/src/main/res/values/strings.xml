@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Task Manager</string>
-    <string name="search">Buscar</string>
+    <string name="search_menu">Buscar</string>
     <string name="addNewTask">Adicionar Tarefa</string>
     <string name="empy_task">Trovões</string>
     <string name="add_task">Adicionar Tarefa.</string>
@@ -10,4 +10,14 @@
     <string name="description">Descrição</string>
     <string name="edit_task">Editar Tarefa.</string>
     <string name="hint_usuario">Usuario</string>
+    <string name="categories">Categorias</string>
+    <string name="categ_personal">Personal</string>
+    <string name="categ_work">Trabalho</string>
+    <string name="categ_study">Estudo</string>
+    <string name="categ_business">Negocio</string>
+    <string name="categ_religion">Religião</string>
+    <string name="categ_other">Outra</string>
+    <string name="select_category">Seleccionar Categoria</string>
+    <string name="save_menu">Salvar</string>
+
 </resources>

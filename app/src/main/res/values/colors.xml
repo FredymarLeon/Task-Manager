@@ -7,4 +7,10 @@
     <color name="light_blue">#c0faff</color>
     <color name="orange">#fc9039</color>
     <color name="red">#c13b34</color>
+    <color name="color_other">#0691FC</color>
+    <color name="color_religion">#EEFE37</color>
+    <color name="color_work">#8BC34A</color>
+    <color name="color_study">#CA64EF</color>
+    <color name="color_business">#673AB7</color>
+    <color name="color_personal">#E91E63</color>
 </resources>

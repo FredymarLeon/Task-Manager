@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    android:layout_marginVertical="4dp"
+    android:layout_marginHorizontal="10dp"
+    app:cardElevation="5dp"
+    android:background="@drawable/orange_border">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvtaskTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="8dp"
+            tools:text="Estudar"
+            android:textStyle="bold"
+            tools:textColor="@color/light_blue"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/taskDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="8dp"
+            tools:text="Ler documentação"
+            android:textStyle="bold"
+            android:maxHeight="165dp"
+            android:textSize="14sp"
+            />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
