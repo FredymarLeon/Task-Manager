@@ -4,33 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_gray"
+    android:background="@color/light_blue"
+    android:padding="5dp"
     tools:context="fragments.TaskManagerFragment">
-
-    <TextView
-        android:id="@+id/title_task_app"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="34sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginVertical="20dp"
-        android:layout_marginHorizontal="20dp"
-        />
 
     <TextView
         android:id="@+id/tvCategories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Categorias"
+        android:text="@string/categories"
         android:textAllCaps="true"
-        android:textColor="@color/light_blue"
-        android:layout_marginTop="25dp"
-        android:layout_marginHorizontal="20dp"
-        app:layout_constraintTop_toBottomOf="@id/title_task_app"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:fontFamily="monospace"
+        android:textColor="@color/dark_blue"
+        android:layout_marginTop="2dp"
+        android:layout_marginHorizontal="6dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
 
@@ -38,54 +28,66 @@
         android:id="@+id/rvCategories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/tvCategories"
+        android:layout_marginHorizontal="2dp"
+        android:layout_marginTop="2dp"
+        android:foregroundGravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="20dp"
-        />
-
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addNoteFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/orange"
-        android:src="@drawable/baseline_add_24"
-        android:tintMode="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvCategories" />
 
     <TextView
         android:id="@+id/tvListTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lista de Tarefas"
+        android:text="@string/my_task"
         android:textAllCaps="true"
-        android:textColor="@color/light_blue"
-        android:layout_marginTop="25dp"
-        android:layout_marginHorizontal="20dp"
+        android:textColor="@color/dark_blue"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="8dp"
         app:layout_constraintTop_toBottomOf="@id/rvCategories"
         app:layout_constraintStart_toStartOf="parent"
         />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvListTask"
-        android:layout_width="match_parent"
+        android:id="@+id/rvListTasks"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvListTask" />
+        android:visibility="visible"
+        android:layout_marginHorizontal="15dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvListTask"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addNoteFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/dark_blue"
+        android:src="@drawable/baseline_add_24"
+        android:tint="@color/blue_gray"
+        android:contentDescription="@string/fabDescrTaskAdd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/emptyTasksImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="@string/empy_task"
-        android:src="@drawable/empy_todolist"
-        android:visibility="gone" />
+        android:contentDescription="@string/empty_task"
+        android:src="@drawable/empty_image_todolist"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
