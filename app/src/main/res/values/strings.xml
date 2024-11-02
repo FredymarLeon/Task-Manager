@@ -19,8 +19,10 @@
     <string name="my_task">Minhas Tarefas</string>
     <string name="empty_task">Trovões</string>
 
-<!--    Tag reservadas para nomes do Recicler View de categorias-->
+<!--    Tag reservadas para nomes de categorias-->
+    <string name="selected_category">Seleccione uma Categoria</string>
     <string name="all_categories">Todas as Categorias</string>
+
     <string name="shopping_categories">Compras</string>
     <string name="study_categories">Estudo</string>
     <string name="wishList_categories">Lista de Desejos</string>
