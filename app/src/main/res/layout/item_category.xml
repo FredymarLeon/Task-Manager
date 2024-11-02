@@ -5,7 +5,7 @@
     android:layout_width="145dp"
     android:layout_height="48dp"
     android:layout_marginHorizontal="5dp"
-    android:layout_marginVertical="1dp"
+    android:layout_marginVertical="2dp"
     app:cardBackgroundColor="@color/dark_blue"
     app:cardCornerRadius="15dp"
     >
@@ -37,4 +37,5 @@
             android:layout_height="2dp"/>
 
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>

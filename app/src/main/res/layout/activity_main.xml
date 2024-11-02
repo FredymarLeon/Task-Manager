@@ -119,19 +119,19 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:textSize="24sp"
-        android:textColor="@color/dark_blue"
-        android:textStyle="bold"
-        android:padding="15dp"
-        android:backgroundTint="@color/light_blue"
-        app:cornerRadius="30dp"
         android:layout_marginHorizontal="40dp"
-        app:layout_constraintTop_toBottomOf="@id/txtForgetYourPassword"
-        app:layout_constraintStart_toStartOf="@id/containerLogin"
-        app:layout_constraintEnd_toEndOf="@id/containerLogin"
+        android:backgroundTint="@color/light_blue"
+        android:padding="15dp"
+        android:text="Login"
+        android:textColor="@color/dark_blue"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="@id/containerLogin"
-        />
+        app:layout_constraintEnd_toEndOf="@id/containerLogin"
+        app:layout_constraintStart_toStartOf="@id/containerLogin"
+        app:layout_constraintTop_toBottomOf="@id/txtForgetYourPassword" />
+
 
     <TextView
         android:id="@+id/cadastreSe"
