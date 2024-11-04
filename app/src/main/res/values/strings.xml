@@ -53,10 +53,8 @@
     <string name="hint_user">Usuario</string>
 
     <!--Welcome-->
-    <string name="welcome_text">Todo List</string>
-    <string name="developer_1">Fredymar Leon</string>
-    <string name="developer_2">Kensyto Berthaud</string>
-    <string name="developer_3">Nadi Duno</string>
+    <string name="welcome_text">Todas as suas tarefas em um só lugar, sempre organizadas e ao seu alcance.</string>
+    <string name="developer_1">Fredymar Leon | Kensyto Berthaud | Nadi Duno</string>
     <string name="date_create">Novembro 20024</string>
 
     <!--Other text-->
