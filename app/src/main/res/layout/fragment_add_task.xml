@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".fragments.AddTaskFragment">
+    tools:context="fragments.AddTaskFragment">
 
     <TextView
         android:id="@+id/tvAddTaskList"
@@ -57,7 +57,7 @@
     <EditText
         android:id="@+id/etAddTaskDescription"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="400dp"
         android:layout_below="@+id/text_input_layout_category"
         android:background="@drawable/orange_border"
         android:gravity="top"

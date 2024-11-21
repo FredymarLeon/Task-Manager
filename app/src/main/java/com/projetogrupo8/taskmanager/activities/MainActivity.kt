@@ -1,18 +1,20 @@
 package com.projetogrupo8.taskmanager.activities
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.button.MaterialButton
+import androidx.lifecycle.ViewModelProvider
 import com.projetogrupo8.taskmanager.R
+import com.projetogrupo8.taskmanager.database.TaskDatabase
+import com.projetogrupo8.taskmanager.repository.TaskRepository
+import com.projetogrupo8.taskmanager.viewModel.TaskViewModel
+import com.projetogrupo8.taskmanager.viewModel.TaskViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var button: MaterialButton
-
+   internal lateinit var taskViewModel: TaskViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,18 +26,14 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        setupButton()
+        setupViewModel()
+
     }
 
-    private fun setupButton() {
-        button = findViewById(R.id.btnLogin)
-        button.setOnClickListener {
-            handleButtonClick()
-        }
-    }
+    private fun setupViewModel(){
+        val taskRepository = TaskRepository(TaskDatabase(this))
+        val viewModelProviderFactory = TaskViewModelFactory(application, taskRepository)
+        taskViewModel = ViewModelProvider(this, viewModelProviderFactory)[TaskViewModel::class.java]
 
-    private fun handleButtonClick() {
-        val intent = Intent(applicationContext, SecondActivity::class.java)
-        startActivity(intent)
     }
 }
