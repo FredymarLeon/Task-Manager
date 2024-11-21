@@ -1,9 +1,9 @@
 <resources>
 
-<!--    Nome do App-->
+    <!--    Nome do App-->
     <string name="app_name">Task Manager</string>
 
-<!--    Menu-->
+    <!--    Menu-->
 
     <!--    Menu_add_task-->
     <string name="New_categories_menu">Nova Lista</string>
@@ -14,12 +14,12 @@
     <!--    task_manager_menu-->
     <string name="search_menu">Buscar</string>
 
-<!--    fragment_task_manager-->
+    <!--    fragment_task_manager-->
     <string name="categories">Categorias</string>
     <string name="my_task">Minhas Tarefas</string>
     <string name="empty_task">Trovões</string>
 
-<!--    Tag reservadas para nomes de categorias-->
+    <!--    Tag reservadas para nomes de categorias-->
     <string name="selected_category">Seleccione uma Categoria</string>
     <string name="all_categories">Todas as Categorias</string>
 
@@ -32,23 +32,38 @@
     <string name="_categories">Trabalho</string>
     <string name="category_completed">Concluído</string>
 
-<!--    fragment_add_task-->
+    <!--    fragment_add_task-->
     <string name="title_add_new_task">Adicionar Tarefa.</string>
     <string name="enter_title">Digite o título</string>
     <string name="enter_description">Insira a descrição</string>
 
-<!--item_task    -->
+    <!--item_task    -->
     <string name="task_title">Título da tarefa</string>
     <string name="description">Descrição</string>
 
-<!--item_category    -->
+    <!--item_category    -->
     <string name="category_personal">Personal</string>
 
-<!--    fragment_edit_task-->
+    <!--    fragment_edit_task-->
     <string name="fabDescrTaskEdit">Botão para salvar tarefa editada</string>
     <string name="fabDescrTaskAdd">Botão para editar tarefa</string>
     <string name="edit_task">Editar Tarefa.</string>
 
-<!--item_category    -->
+    <!--item_category    -->
     <string name="hint_user">Usuario</string>
+
+    <!--Welcome-->
+    <string name="welcome_text">Todas as suas tarefas em um só lugar, sempre organizadas e ao seu alcance.</string>
+    <string name="developer_1">Fredymar Leon | Kensyto Berthaud | Nadi Duno</string>
+    <string name="date_create">Novembro 20024</string>
+
+    <!--Other text-->
+    <string name="login">Faça seu Login</string>
+    <string name="user_name">Nome do Úsuario</string>
+    <string name="password_text">Password</string>
+    <string name="password_forget">Esqueceu sua senha?</string>
+    <string name="password_remember">Lembrar senha</string>
+    <string name="login_text">Login</string>
+    <string name="count_login">Ainda não possui uma conta? Cadastre-se</string>
+
 </resources>
