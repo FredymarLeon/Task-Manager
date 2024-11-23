@@ -21,18 +21,18 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="200"
-            tools:text="@string/task_title"
+            android:text="@string/task_title"
             android:fontFamily="monospace"
             android:textStyle="bold"
-            tools:textColor="@color/dark_blue"
+            android:textColor="@color/dark_blue"
             android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/taskDescription"
+            android:id="@+id/tvTaskDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
-            tools:text="@string/description"
+            android:text="@string/description"
             android:textStyle="bold"
             android:maxHeight="170dp"
             android:textSize="14sp"
