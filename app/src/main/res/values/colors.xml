@@ -2,20 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="dark_blue"> #0f353d</color>
+    <color name="blue_dark"> #0f353d</color>
     <color name="blue_gray">#40646c</color>
-    <color name="light_blue">#c0faff</color>
-    <color name="orange">#fc9039</color>
+    <color name="blue_light">#c0faff</color>
     <color name="red">#c13b34</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="purple_200">#ffBB85FC</color>
-    <color name="color_work">#C911B4</color>
-    <color name="color_personal">#00BCD4</color>
-    <color name="color_business">#42E748</color>
-    <color name="color_study">#F1063B</color>
-    <color name="color_religion">#F6C327</color>
-    <color name="color_other">#3AAC68</color>
     <color name="gray_dark">#3C3B3B</color>
 
 </resources>
