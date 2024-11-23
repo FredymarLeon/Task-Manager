@@ -19,6 +19,8 @@
     <string name="title_add_new_task">New Task</string>
     <string name="enter_title">Enter title</string>
     <string name="enter_description">Enter description</string>
+    <string name="selected_category">Select the category</string>
+    <string name="category">Study</string>
 
     <!--item_task    -->
     <string name="task_title">Task title</string>

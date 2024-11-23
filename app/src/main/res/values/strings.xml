@@ -19,6 +19,9 @@
     <string name="title_add_new_task">Nova Tarefa</string>
     <string name="enter_title">Digite o título</string>
     <string name="enter_description">Insira a descrição</string>
+    <string name="selected_category">Selecione a categoria</string>
+    <string name="category">Estudo</string>
+
 
     <!--item_task    -->
     <string name="task_title">Título da tarefa</string>
