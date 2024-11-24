@@ -25,7 +25,7 @@ class TaskAdapter: RecyclerView.Adapter<TaskViewHolder>(){
         }
     }
 
-    private val asyncListDiffer = AsyncListDiffer(this, diffUtil)
+    val asyncListDiffer = AsyncListDiffer(this, diffUtil)
 
 
     //Metodos do Adapter

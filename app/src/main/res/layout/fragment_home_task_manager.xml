@@ -84,6 +84,7 @@
         android:id="@+id/emptyTasksImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:src="@drawable/image_empy"
         android:contentDescription="@string/empty_task"
         android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"

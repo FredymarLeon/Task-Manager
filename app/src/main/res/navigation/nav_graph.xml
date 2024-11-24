@@ -31,7 +31,7 @@
             android:id="@+id/action_editTaskFragment_to_homeTaskManagerFragment"
             app:destination="@id/homeTaskManagerFragment" />
 
-        <argument android:name="task"
+        <argument android:name="Task"
             app:argType="com.projetogrupo8.taskmanager.model.Task"
             app:nullable="true"/>
     </fragment>

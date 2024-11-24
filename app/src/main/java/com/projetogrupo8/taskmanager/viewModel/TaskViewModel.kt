@@ -24,7 +24,7 @@ class TaskViewModel (app: Application, private val taskRepository: TaskRepositor
             taskRepository.updateTask(task)
         }
 
-    private fun readAllTasks() = taskRepository.readAllTasks()
+    fun readAllTasks() = taskRepository.readAllTasks()
 
     fun searchTask(query: String?) = taskRepository.searchTasks(query)
 }

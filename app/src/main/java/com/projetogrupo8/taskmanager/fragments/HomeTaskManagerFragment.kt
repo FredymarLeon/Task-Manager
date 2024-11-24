@@ -13,11 +13,14 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.projetogrupo8.taskmanager.R
 import com.projetogrupo8.taskmanager.activities.MainActivity
 import com.projetogrupo8.taskmanager.adapter.TaskAdapter
 import com.projetogrupo8.taskmanager.databinding.FragmentHomeTaskManagerBinding
+import com.projetogrupo8.taskmanager.model.Task
 import com.projetogrupo8.taskmanager.viewModel.TaskViewModel
+import java.util.Collections.list
 
 //TODO: ATUALIZAR A UI: image visivel quando a lista estiver vazia
 //TODO: CONFIGURAR O RECYCLERVIEW (LISTAR AS TAREFAS)
@@ -47,21 +50,71 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        taskViewModel = (activity as MainActivity).taskViewModel
+        taskViewModel = (activity as MainActivity).taskViewModel    //Inicializar ViewModel
+        setupRecyclerView()     //chamar a função de visualização do RecyclerView
 
         binding.addTaskFab.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeTaskManagerFragment_to_addTaskFragment)
         }
     }
 
-    //Metodo fornecido pelo MenuProvider para configurar menu de pequisa
-
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        TODO("Not yet implemented")
+    //Atualizar a interface de Usuario UI
+    private fun updateUI(task: List<Task>?){
+        if (task != null){
+            if (task.isNotEmpty()){
+                binding.emptyTasksImage.visibility = View.GONE
+                binding.rvListTasks.visibility = View.VISIBLE
+            } else {
+                binding.emptyTasksImage.visibility = View.VISIBLE
+                binding.rvListTasks.visibility = View.GONE
+            }
+        }
     }
 
-    override fun onQueryTextChange(newText: String?): Boolean {
-        TODO("Not yet implemented")
+    //Visualização do recyclerView
+    private fun setupRecyclerView(){
+        taskAdapter = TaskAdapter()
+        binding.rvListTasks.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            setHasFixedSize(true)
+            adapter = taskAdapter
+        }
+
+        activity.let {
+            taskViewModel.readAllTasks().observe(viewLifecycleOwner){task ->
+                taskAdapter.asyncListDiffer.submitList(task)
+                updateUI(task)
+            }
+        }
+    }
+
+    //Função de pesquisa
+    private fun searchTask(query: String?){
+        val searchQuery = "%$query" //pode não ter caracteres ou pode ter mais de um
+
+        //observar tasks na lista
+        taskViewModel.searchTask(searchQuery).observe(this) {
+            list -> taskAdapter.asyncListDiffer.submitList(list)
+        }
+
+    }
+
+    //Metodo fornecido pelo MenuProvider para configurar menu de pequisa
+
+    override fun onQueryTextSubmit(query: String?): Boolean {   //envio de texto de consulta
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {     //atualização de texto de consulta, faz o resultado começar aparecer.
+        if (newText != null) {
+            searchTask(newText)
+        }
+        return true
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        homeTaskManagerBinding = null
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

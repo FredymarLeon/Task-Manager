@@ -13,7 +13,7 @@
     <string name="categories">Categorias</string>
     <string name="my_task">Minhas Tarefas</string>
     <string name="fabDescrTaskAdd">Botão para criar nova tarefa</string>
-    <string name="empty_task">Trovões</string>
+    <string name="empty_task">Imagem de lista de tarefas vazia</string>
 
     <!--    fragment_add_task-->
     <string name="title_add_new_task">Nova Tarefa</string>
