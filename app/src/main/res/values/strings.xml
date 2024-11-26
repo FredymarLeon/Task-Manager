@@ -37,7 +37,7 @@
     <!--Welcome-->
     <string name="welcome_text">Todas as suas tarefas em um só lugar, sempre organizadas e ao seu alcance.</string>
     <string name="developer_1">Fredymar Leon | Kensyto Berthaud | Nadi Duno</string>
-    <string name="date_create">Novembro 20024</string>
+    <string name="date_create">Novembro 2024</string>
 
     <!--Other text-->
     <string name="login">Faça seu Login</string>
