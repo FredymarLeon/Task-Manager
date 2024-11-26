@@ -20,9 +20,7 @@ import com.projetogrupo8.taskmanager.adapter.TaskAdapter
 import com.projetogrupo8.taskmanager.databinding.FragmentHomeTaskManagerBinding
 import com.projetogrupo8.taskmanager.model.Task
 import com.projetogrupo8.taskmanager.viewModel.TaskViewModel
-import java.util.Collections.list
 
-//TODO: ATUALIZAR A UI: image visivel quando a lista estiver vazia
 //TODO: CONFIGURAR O RECYCLERVIEW (LISTAR AS TAREFAS)
 //TODO: FUNÇÃO da lógica de pesquisa
 //TODO: CONFIGURAR O RECYCLERVIEW (LISTAR AS CATEGORIAS)*
@@ -32,7 +30,7 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
     private var homeTaskManagerBinding: FragmentHomeTaskManagerBinding? = null
     private val binding get() = homeTaskManagerBinding!!
 
-    private lateinit var taskViewModel: TaskViewModel
+    private lateinit var tasksViewModel: TaskViewModel
     private lateinit var taskAdapter: TaskAdapter
 
     override fun onCreateView(
@@ -50,15 +48,15 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        taskViewModel = (activity as MainActivity).taskViewModel    //Inicializar ViewModel
-        setupRecyclerView()     //chamar a função de visualização do RecyclerView
+        tasksViewModel = (activity as MainActivity).taskViewModel    //Inicializar o ViewModel
+        setupRecyclerView()     //Configurar o RecyclerView
 
         binding.addTaskFab.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeTaskManagerFragment_to_addTaskFragment)
         }
     }
 
-    //Atualizar a interface de Usuario UI
+    //1.Atualizar a interface de Usuario (Observar as tarefas e atualizar o Adapter)
     private fun updateUI(task: List<Task>?){
         if (task != null){
             if (task.isNotEmpty()){
@@ -71,7 +69,7 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
         }
     }
 
-    //Visualização do recyclerView
+    //2.Visualização do recyclerView
     private fun setupRecyclerView(){
         taskAdapter = TaskAdapter()
         binding.rvListTasks.apply {
@@ -80,26 +78,26 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
             adapter = taskAdapter
         }
 
-        activity.let {
-            taskViewModel.readAllTasks().observe(viewLifecycleOwner){task ->
+        activity?.let {
+            tasksViewModel.readAllTasks().observe(viewLifecycleOwner){task ->
                 taskAdapter.asyncListDiffer.submitList(task)
                 updateUI(task)
             }
         }
     }
 
-    //Função de pesquisa
+    //4.Função de pesquisa
     private fun searchTask(query: String?){
         val searchQuery = "%$query" //pode não ter caracteres ou pode ter mais de um
 
         //observar tasks na lista
-        taskViewModel.searchTask(searchQuery).observe(this) {
+        tasksViewModel.searchTask(searchQuery).observe(this) {
             list -> taskAdapter.asyncListDiffer.submitList(list)
         }
 
     }
 
-    //Metodo fornecido pelo MenuProvider para configurar menu de pequisa
+    //3.Metodo fornecido pelo MenuProvider para configurar menu de pequisa
 
     override fun onQueryTextSubmit(query: String?): Boolean {   //envio de texto de consulta
         return false

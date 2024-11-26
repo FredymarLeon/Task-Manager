@@ -8,13 +8,15 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
+import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.findNavController
 import com.projetogrupo8.taskmanager.R
 import com.projetogrupo8.taskmanager.activities.MainActivity
 import com.projetogrupo8.taskmanager.databinding.FragmentAddTaskBinding
+import com.projetogrupo8.taskmanager.model.Task
 import com.projetogrupo8.taskmanager.viewModel.TaskViewModel
 
 //TODO: Função para salvar tarefa: fun saveTask | Mostar Toast
@@ -24,12 +26,8 @@ class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
     private var addTaskBinding: FragmentAddTaskBinding? = null  //variável mutável que pode ser nula
     private val binding get() = addTaskBinding!!    //O operador !! força o Kotlin a tratar a variável como não-nula. Se a variável for nula, o app irá lançar uma exceção
 
-    private lateinit var taskViewModel: TaskViewModel
+    private lateinit var tasksViewModel: TaskViewModel   //Declaração do VieWModel
     private lateinit var addTaskView: View
-
-
-    //Falta construir a função para adicionar tarefa: fun addTask | Mostar Toast
-    fun addTask(view: View){}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,17 +38,34 @@ class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
         return binding.root
     }
 
+    //1.Menu
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val menuHost: MenuHost = requireActivity()
+        val menuHost: MenuHost = requireActivity()  //Configurar menuHost
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        taskViewModel = (activity as MainActivity).taskViewModel
+        tasksViewModel = (activity as MainActivity).taskViewModel       //Modelo de visualização
         addTaskView = view
     }
 
-    //Funções do MenuProvider
+    //2.Função para adicionar tarefa: fun addTask | Mostar Toast
+    private fun addTask(view: View){
+        val taskTitle = binding.etAddTaskTitle.text.toString().trim()
+        val taskDesc = binding.etAddTaskDescription.text.toString().trim()
+
+        if (taskTitle.isNotEmpty()){
+            val task = Task(0, taskTitle, taskDesc)
+            tasksViewModel.addTask(task)
+
+            Toast.makeText(addTaskView.context, "Tarefa salva", Toast.LENGTH_SHORT).show()
+            view.findNavController().popBackStack(R.id.homeTaskManagerFragment, false)
+        } else{
+            Toast.makeText(addTaskView.context, "Por favor insira o título e a descrição da tarefa", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    //3.Funções do MenuProvider
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menu.clear()
         menuInflater.inflate(R.menu.menu_add_task,menu)
@@ -66,4 +81,8 @@ class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        addTaskBinding = null
+    }
 }
