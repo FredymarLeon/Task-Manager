@@ -1,4 +1,4 @@
-package fragments
+package com.projetogrupo8.taskmanager.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.MenuHost
@@ -15,28 +14,21 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.projetogrupo8.taskmanager.R
 import com.projetogrupo8.taskmanager.activities.MainActivity
-import com.projetogrupo8.taskmanager.databinding.FragmentAddTaskBinding
 import com.projetogrupo8.taskmanager.databinding.FragmentEditTaskBinding
-import com.projetogrupo8.taskmanager.fragments.EditTaskFragmentArgs
 import com.projetogrupo8.taskmanager.model.Task
-import com.projetogrupo8.taskmanager.viewModel.EditTaskViewModel
 import com.projetogrupo8.taskmanager.viewModel.TaskViewModel
-
-//TODO: Editar tarefa e salvar tarefa editada = button EditTaskFAB| Mostar Toast
-//TODO: Detetar tarefa: fun deleteTask = icone do menu | Mostar AlertDialog
-
+import androidx.navigation.fragment.navArgs
 
 class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
 
     private var editTaskBinding: FragmentEditTaskBinding? = null
     private val binding get() = editTaskBinding!!
+
     private lateinit var tasksViewModel: TaskViewModel
     private lateinit var currentTask: Task
+
     private val args: EditTaskFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -69,6 +61,7 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
                 val task = Task(currentTask.id, tvTaskTitle, tvTaskDescription)
                 tasksViewModel.updateTask(task)
                 view.findNavController().popBackStack(R.id.homeTaskManagerFragment, false)
+                Toast.makeText(context, "Tarefa editada e salva!", Toast.LENGTH_SHORT).show()
 
             } else {
                 Toast.makeText(context, "Por Favor, insira o título da tarefa!", Toast.LENGTH_SHORT).show()
@@ -77,17 +70,17 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
 
     }
 
-    fun deleteTask() {
-        AlertDialog.Builder(activity).apply {
-            setTitle("Vôce tem certeza?")
-            setMessage("Remover Tarefa?")
-            setPositiveButton("SIM") {_,_ ->
-                tasksViewModel.deleteTask(currentTask)
-                Toast.makeText(context, "Tarefa foi removido", Toast.LENGTH_SHORT).show()
-                view?.findNavController()?.popBackStack(R.id.homeTaskManagerFragment, false)
-            }
-            setNegativeButton("CANCELAR", null)
-        }.create().show()
+    private fun deleteTask() {
+            AlertDialog.Builder(requireActivity()).apply {
+                setTitle("Vôce tem certeza?")
+                setMessage("Remover Tarefa?")
+                setPositiveButton("SIM") {_,_ ->
+                    tasksViewModel.deleteTask(currentTask)
+                    Toast.makeText(context, "Tarefa foi removido", Toast.LENGTH_SHORT).show()
+                    view?.findNavController()?.popBackStack(R.id.homeTaskManagerFragment, false)
+                }
+                setNegativeButton("CANCELAR", null)
+            }.create().show()
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

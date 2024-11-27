@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    tools:context="fragments.EditTaskFragment">
+    tools:context=".fragments.EditTaskFragment">
 
     <TextView
         android:id="@+id/tvEditTaskTitle"
@@ -26,7 +26,9 @@
         android:gravity="top"
         android:hint="@string/enter_title"
         android:textColor="@color/blue_dark"
-        android:inputType="text|number"
+        android:inputType="text"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:fontFamily="monospace"
         android:maxLines="1"
         android:padding="15dp"
@@ -43,7 +45,9 @@
         android:gravity="top"
         android:hint="@string/enter_description"
         android:textColor="@color/blue_gray"
-        android:inputType="text|number"
+        android:inputType="text"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:fontFamily="monospace"
         android:padding="12dp"
         android:textSize="18sp"

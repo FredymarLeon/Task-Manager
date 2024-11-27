@@ -2,6 +2,7 @@
 buildscript {
     repositories {
         google()    //começar a usar o Android KTX
+
     }
     dependencies {
         classpath(libs.androidx.navigation.safe.args.gradle.plugin)
