@@ -31,21 +31,4 @@
     <string name="fabDescrTaskEdit">Botão para salvar tarefa editada</string>
     <string name="edit_task">Editar Tarefa</string>
 
-    <!--item_category    -->
-    <string name="category_personal">Personal</string>
-
-    <!--Welcome-->
-    <string name="welcome_text">Todas as suas tarefas em um só lugar, sempre organizadas e ao seu alcance.</string>
-    <string name="developer_1">Fredymar Leon | Kensyto Berthaud | Nadi Duno</string>
-    <string name="date_create">Novembro 2024</string>
-
-    <!--Other text-->
-    <string name="login">Faça seu Login</string>
-    <string name="user_name">Nome do Úsuario</string>
-    <string name="password_text">Password</string>
-    <string name="password_forget">Esqueceu sua senha?</string>
-    <string name="password_remember">Lembrar senha</string>
-    <string name="login_text">Login</string>
-    <string name="count_login">Ainda não possui uma conta? Cadastre-se</string>
-
 </resources>

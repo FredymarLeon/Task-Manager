@@ -21,8 +21,6 @@ import com.projetogrupo8.taskmanager.databinding.FragmentHomeTaskManagerBinding
 import com.projetogrupo8.taskmanager.model.Task
 import com.projetogrupo8.taskmanager.viewModel.TaskViewModel
 
-//TODO: CONFIGURAR O RECYCLERVIEW (LISTAR AS TAREFAS)
-//TODO: FUNÇÃO da lógica de pesquisa
 //TODO: CONFIGURAR O RECYCLERVIEW (LISTAR AS CATEGORIAS)*
 
 class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), SearchView.OnQueryTextListener, MenuProvider {

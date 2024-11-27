@@ -14,21 +14,19 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.projetogrupo8.taskmanager.R
 import com.projetogrupo8.taskmanager.activities.MainActivity
 import com.projetogrupo8.taskmanager.databinding.FragmentEditTaskBinding
 import com.projetogrupo8.taskmanager.model.Task
 import com.projetogrupo8.taskmanager.viewModel.TaskViewModel
-import androidx.navigation.fragment.navArgs
 
 class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
 
     private var editTaskBinding: FragmentEditTaskBinding? = null
     private val binding get() = editTaskBinding!!
-
     private lateinit var tasksViewModel: TaskViewModel
     private lateinit var currentTask: Task
-
     private val args: EditTaskFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -71,16 +69,16 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
     }
 
     private fun deleteTask() {
-            AlertDialog.Builder(requireActivity()).apply {
-                setTitle("Vôce tem certeza?")
-                setMessage("Remover Tarefa?")
-                setPositiveButton("SIM") {_,_ ->
-                    tasksViewModel.deleteTask(currentTask)
-                    Toast.makeText(context, "Tarefa foi removido", Toast.LENGTH_SHORT).show()
-                    view?.findNavController()?.popBackStack(R.id.homeTaskManagerFragment, false)
-                }
-                setNegativeButton("CANCELAR", null)
-            }.create().show()
+        AlertDialog.Builder(requireActivity()).apply {
+            setTitle("Vôce tem certeza?")
+            setMessage("Remover Tarefa?")
+            setPositiveButton("SIM") {_,_ ->
+                tasksViewModel.deleteTask(currentTask)
+                Toast.makeText(context, "Tarefa foi removido", Toast.LENGTH_SHORT).show()
+                view?.findNavController()?.popBackStack(R.id.homeTaskManagerFragment, false)
+            }
+            setNegativeButton("CANCELAR", null)
+        }.create().show()
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
