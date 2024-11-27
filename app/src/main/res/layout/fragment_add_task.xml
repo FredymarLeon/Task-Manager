@@ -27,7 +27,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/blue_dark_border"
         android:hint="@string/enter_title"
-        android:inputType="text|number"
+        android:inputType="text"
         android:maxLines="1"
         android:padding="15dp"
         android:textSize="20sp"
@@ -57,12 +57,12 @@
     <EditText
         android:id="@+id/etAddTaskDescription"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="match_parent"
         android:layout_below="@+id/text_input_layout_category"
         android:background="@drawable/blue_dark_border"
         android:gravity="top"
         android:hint="@string/enter_description"
-        android:inputType="text|number"
+        android:inputType="text"
         android:padding="15dp"
         android:textSize="18sp"
         tools:ignore="Autofill" />
