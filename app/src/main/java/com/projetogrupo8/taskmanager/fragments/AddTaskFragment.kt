@@ -19,7 +19,6 @@ import com.projetogrupo8.taskmanager.databinding.FragmentAddTaskBinding
 import com.projetogrupo8.taskmanager.model.Task
 import com.projetogrupo8.taskmanager.viewModel.TaskViewModel
 
-//TODO: Função para salvar tarefa: fun saveTask | Mostar Toast
 
 class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
 
@@ -58,10 +57,10 @@ class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
             val task = Task(0, taskTitle, taskDesc)
             tasksViewModel.addTask(task)
 
-            Toast.makeText(addTaskView.context, "Tarefa salva", Toast.LENGTH_SHORT).show()
+            Toast.makeText(addTaskView.context, getString(R.string.saved_task), Toast.LENGTH_SHORT).show()
             view.findNavController().popBackStack(R.id.homeTaskManagerFragment, false)
         } else{
-            Toast.makeText(addTaskView.context, "Por favor insira o título e a descrição da tarefa", Toast.LENGTH_SHORT).show()
+            Toast.makeText(addTaskView.context, getString(R.string.task_title_and_description), Toast.LENGTH_SHORT).show()
         }
     }
 

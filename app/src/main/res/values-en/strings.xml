@@ -19,8 +19,8 @@
     <string name="title_add_new_task">New Task</string>
     <string name="enter_title">Enter title</string>
     <string name="enter_description">Enter description</string>
-    <string name="selected_category">Select the category</string>
-    <string name="category">Study</string>
+    <string name="saved_task">Saved task</string>
+    <string name="task_title_and_description">Please enter the task title and description</string>
 
     <!--item_task    -->
     <string name="task_title">Task title</string>
@@ -29,5 +29,12 @@
     <!--    fragment_edit_task-->
     <string name="fabDescrTaskEdit">Button to save edited task</string>
     <string name="edit_task">Edit Task</string>
+    <string name="confirm_edit">Saved task</string>
+    <string name="insert_title">Please enter the task title!</string>
+    <string name="set_Title">Are you sure</string>
+    <string name="set_Message">Remove Task</string>
+    <string name="set_Positive_Button">YES</string>
+    <string name="confirm_task_removed">Task has been removed</string>
+    <string name="set_Negative_Button">CANCEL</string>
 
 </resources>

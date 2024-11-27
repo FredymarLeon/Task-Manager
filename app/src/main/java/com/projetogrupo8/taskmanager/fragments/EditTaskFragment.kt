@@ -59,10 +59,10 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
                 val task = Task(currentTask.id, tvTaskTitle, tvTaskDescription)
                 tasksViewModel.updateTask(task)
                 view.findNavController().popBackStack(R.id.homeTaskManagerFragment, false)
-                Toast.makeText(context, "Tarefa editada e salva!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.confirm_edit), Toast.LENGTH_SHORT).show()
 
             } else {
-                Toast.makeText(context, "Por Favor, insira o título da tarefa!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.insert_title), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -70,14 +70,14 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
 
     private fun deleteTask() {
         AlertDialog.Builder(requireActivity()).apply {
-            setTitle("Vôce tem certeza?")
-            setMessage("Remover Tarefa?")
-            setPositiveButton("SIM") {_,_ ->
+            setTitle(getString(R.string.set_Title))
+            setMessage(getString(R.string.set_Message))
+            setPositiveButton(getString(R.string.set_Positive_Button)) { _, _ ->
                 tasksViewModel.deleteTask(currentTask)
-                Toast.makeText(context, "Tarefa foi removido", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.confirm_task_removed), Toast.LENGTH_SHORT).show()
                 view?.findNavController()?.popBackStack(R.id.homeTaskManagerFragment, false)
             }
-            setNegativeButton("CANCELAR", null)
+            setNegativeButton(getString(R.string.set_Negative_Button), null)
         }.create().show()
     }
 
