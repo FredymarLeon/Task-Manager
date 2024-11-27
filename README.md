@@ -8,7 +8,8 @@ CRUD Rest APIs
 
 [![Author](https://img.shields.io/badge/Dev-Fredymar%20Leon-blueviolet%20)](https://github.com/FredymarLeon)
 [![Author](https://img.shields.io/badge/Dev-Kensyto%20Berthaud-blueviolet%20)](https://github.com/Kensyto)
-[![Author](https://img.shields.io/badge/Dev-Nadi%20Duno-blueviolet%20)](https://github.com/nadiduno/)
+[![Author](https://img.shields.io/badge/Dev-Maribel%20Parmo-blueviolet%20)](https://github.com/marparmo)
+[![Author](https://img.shields.io/badge/Dev-Luis%20Goattache-blueviolet%20)](https://github.com/Lago2024)
 <br />
 
 ## Tecnologia implementada
