@@ -24,7 +24,17 @@
             android:fontFamily="monospace"
             android:textStyle="bold"
             android:textColor="@color/blue_dark"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tvTaskDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data e Hora"
+            android:textSize="14sp"
+            android:textColor="@color/blue_light"
+            android:layout_marginBottom="8dp"/>
 
         <TextView
             android:id="@+id/tvTaskDescription"

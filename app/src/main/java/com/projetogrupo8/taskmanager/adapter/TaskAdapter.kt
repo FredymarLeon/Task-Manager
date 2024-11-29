@@ -40,10 +40,24 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.TaskViewHolder>(){
         val currentTask = asyncListDiffer.currentList[position]         //val item = taskList[position]
         holder.itemBinding.tvTaskTitle.text = currentTask.tvTaskTitle
         holder.itemBinding.tvTaskDescription.text = currentTask.tvTaskDescription
+        holder.itemBinding.tvTaskDateTime.text = formatDateTime(currentTask.date, currentTask.time)
 
         holder.itemView.setOnClickListener {
             val direction = HomeTaskManagerFragmentDirections.actionHomeTaskManagerFragmentToEditTaskFragment(currentTask)
             it.findNavController().navigate(direction)
+        }
+    }
+
+    // Função para formatar data e hora
+    private fun formatDateTime(date: String?, time: String?): String {
+        return if (!date.isNullOrEmpty() && !time.isNullOrEmpty()) {
+            "$date às $time" // Exemplo: "25/11/2024 às 14:30"
+        } else if (!date.isNullOrEmpty()) {
+            date
+        } else if (!time.isNullOrEmpty()) {
+            time
+        } else {
+            "Sem data e hora"
         }
     }
 

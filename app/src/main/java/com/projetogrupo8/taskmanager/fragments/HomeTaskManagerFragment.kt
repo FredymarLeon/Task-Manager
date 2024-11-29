@@ -96,14 +96,14 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
 
     //3.Metodo fornecido pelo MenuProvider para configurar menu de pequisa
 
-    override fun onQueryTextSubmit(query: String?): Boolean {   //envio de texto de consulta
+    override fun onQueryTextSubmit(query: String?): Boolean {
         if (query != null) {
             searchTask(query)
         }
         return true
     }
 
-    override fun onQueryTextChange(newText: String?): Boolean {     //atualização de texto de consulta, faz o resultado começar aparecer.
+    override fun onQueryTextChange(newText: String?): Boolean {
         if (newText != null) {
             searchTask(newText)
         }
