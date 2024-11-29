@@ -84,8 +84,8 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
     }
 
     //4.Função de pesquisa
-    private fun searchTask(query: String?){
-        val searchQuery = "%$query" //pode não ter caracteres ou pode ter mais de um
+    private fun searchTask(query: String){
+        val searchQuery = "%$query%"
 
         //observar tasks na lista
         tasksViewModel.searchTask(searchQuery).observe(this) {
@@ -97,7 +97,10 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
     //3.Metodo fornecido pelo MenuProvider para configurar menu de pequisa
 
     override fun onQueryTextSubmit(query: String?): Boolean {   //envio de texto de consulta
-        return false
+        if (query != null) {
+            searchTask(query)
+        }
+        return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {     //atualização de texto de consulta, faz o resultado começar aparecer.

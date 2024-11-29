@@ -12,7 +12,7 @@ import com.projetogrupo8.taskmanager.model.Task
 @Dao
 interface TaskDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)    //OnConflictStrategy = DEPRECATE: é boa prática implementar??
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTask(task: Task)
 
     @Update
@@ -21,9 +21,9 @@ interface TaskDao {
     @Delete
     suspend fun deleteTask(task: Task)
 
-    @Query("SELECT * FROM TASKS ORDER BY id ASC")
+    @Query("SELECT * FROM tasks_table ORDER BY id ASC")
     fun readAllTasks(): LiveData<List<Task>>
 
-    @Query("SELECT * FROM TASKS WHERE tvTaskTitle LIKE :query Or tvTaskDescription LIKE  :query")
-    fun searchTask(query: String?): LiveData<List<Task>>
+    @Query("SELECT * FROM tasks_table WHERE tvTaskTitle LIKE :query Or tvTaskDescription LIKE  :query")
+    fun searchTask(query: String): LiveData<List<Task>>
 }
