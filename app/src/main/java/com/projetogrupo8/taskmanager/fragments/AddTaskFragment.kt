@@ -69,7 +69,7 @@ class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
             requireContext(),
             { _, selectedYear, selectedMonth, selectedDay ->
 
-                selectedDate = String.format(getString(R.string.data_format), selectedYear, selectedMonth + 1, selectedDay)
+                selectedDate = String.format(getString(R.string.data_format), selectedDay, selectedMonth + 1, selectedYear)
                 binding.tvSelectedDate.text = selectedDate
             },
             year, month, day
