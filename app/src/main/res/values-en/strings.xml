@@ -31,7 +31,6 @@
     <string name="time_not_select"> </string>
     <string name="time_format">%02d:%02d</string>
     <string name="data_format">%04d-%02d-%02d</string>
-    <string name="data_conv_format">%02d-%02d-%04d</string>
 
     <!--item_task    -->
     <string name="date_time">Date and Time</string>
