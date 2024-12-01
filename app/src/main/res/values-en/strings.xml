@@ -46,6 +46,6 @@
     <string name="set_Message">Remove Task</string>
     <string name="set_Positive_Button">YES</string>
     <string name="confirm_task_removed">Task has been removed</string>
-    <string name="set_Negative_Button">CANCEL</string>
+    <string name="set_Negative_Button">Cancel</string>
 
 </resources>
