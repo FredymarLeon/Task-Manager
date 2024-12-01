@@ -102,7 +102,7 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
             { _, selectedYear, selectedMonth, selectedDay ->
 
                 val dateFormat = getString(R.string.data_format)
-                selectedDate = String.format(dateFormat, selectedDay, selectedMonth + 1, selectedYear)
+                selectedDate = String.format(dateFormat, selectedYear, selectedMonth + 1, selectedDay)
                 binding.tvSelectedDate.text = selectedDate
             },
             year, month, day
