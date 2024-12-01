@@ -19,6 +19,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.projetogrupo8.taskmanager.R
 import com.projetogrupo8.taskmanager.activities.MainActivity
+import com.projetogrupo8.taskmanager.databinding.CustomAlertDialogBinding
 import com.projetogrupo8.taskmanager.databinding.FragmentEditTaskBinding
 import com.projetogrupo8.taskmanager.model.Task
 import com.projetogrupo8.taskmanager.viewModel.TaskViewModel
@@ -47,10 +48,10 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val menuHost: MenuHost = requireActivity()  //Configurar menuHost
+        val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        tasksViewModel = (activity as MainActivity).taskViewModel       //Modelo de visualização
+        tasksViewModel = (activity as MainActivity).taskViewModel
         currentTask = args.task!!
 
         binding.etEditTaskTitle.setText(currentTask.tvTaskTitle)
@@ -101,9 +102,7 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
             { _, selectedYear, selectedMonth, selectedDay ->
 
                 val dateFormat = getString(R.string.data_format)
-                selectedDate =
-                    String.format(dateFormat, selectedDay, selectedMonth + 1, selectedYear)
-
+                selectedDate = String.format(dateFormat, selectedYear, selectedMonth + 1, selectedDay)
                 binding.tvSelectedDate.text = selectedDate
             },
             year, month, day
@@ -121,7 +120,7 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
             { _, selectedHour, selectedMinute ->
                 selectedTime =
                     String.format(getString(R.string.time_format), selectedHour, selectedMinute)
-                binding.tvSelectedTime.text = selectedTime
+                binding.tvSelectedDate.text = selectedTime
             },
             hour, minute, true
         )
@@ -129,20 +128,29 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
     }
 
     private fun deleteTask() {
-        AlertDialog.Builder(requireActivity()).apply {
-            setTitle(getString(R.string.set_Title))
-            setMessage(getString(R.string.set_Message))
-            setPositiveButton(getString(R.string.set_Positive_Button)) { _, _ ->
-                tasksViewModel.deleteTask(currentTask)
-                Toast.makeText(
-                    context,
-                    getString(R.string.confirm_task_removed),
-                    Toast.LENGTH_SHORT
-                ).show()
-                view?.findNavController()?.popBackStack(R.id.homeTaskManagerFragment, false)
-            }
-            setNegativeButton(getString(R.string.set_Negative_Button), null)
-        }.create().show()
+
+        val dialogBinding = CustomAlertDialogBinding.inflate(layoutInflater)
+
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(dialogBinding.root)
+            .create()
+
+        dialogBinding.btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialogBinding.btnConfirm.setOnClickListener {
+            tasksViewModel.deleteTask(currentTask)
+            Toast.makeText(
+                context,
+                getString(R.string.confirm_task_removed),
+                Toast.LENGTH_SHORT
+            ).show()
+            view?.findNavController()?.popBackStack(R.id.homeTaskManagerFragment, false)
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

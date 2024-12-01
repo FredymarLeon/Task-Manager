@@ -44,8 +44,8 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        tasksViewModel = (activity as MainActivity).taskViewModel    //Inicializar o ViewModel
-        setupRecyclerView()     //Configurar o RecyclerView
+        tasksViewModel = (activity as MainActivity).taskViewModel
+        setupRecyclerView()
 
         binding.addTaskFab.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeTaskManagerFragment_to_addTaskFragment)
@@ -84,7 +84,7 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
         val searchQuery = "%$query%"
 
         tasksViewModel.searchTask(searchQuery).observe(this) {
-            list -> taskAdapter.asyncListDiffer.submitList(list)
+                list -> taskAdapter.asyncListDiffer.submitList(list)
 
             if (list.isEmpty()) {
                 binding.tvNoResults.text = String.format("\"%s\" %s", query, getString(R.string.no_results))

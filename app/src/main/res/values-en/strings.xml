@@ -30,7 +30,8 @@
     <string name="date_not_select"> </string>
     <string name="time_not_select"> </string>
     <string name="time_format">%02d:%02d</string>
-    <string name="data_format">%02d/%02d/%04d</string>
+    <string name="data_format">%04d-%02d-%02d</string>
+    <string name="data_conv_format">%02d-%02d-%04d</string>
 
     <!--item_task    -->
     <string name="date_time">Date and Time</string>
@@ -44,8 +45,8 @@
     <string name="confirm_edit">Saved task</string>
     <string name="set_Title">Are you sure</string>
     <string name="set_Message">Remove Task</string>
-    <string name="set_Positive_Button">YES</string>
-    <string name="confirm_task_removed">Task has been removed</string>
+    <string name="set_Positive_Button">EXCLUDE</string>
     <string name="set_Negative_Button">Cancel</string>
+    <string name="confirm_task_removed">Task has been removed</string>
 
 </resources>

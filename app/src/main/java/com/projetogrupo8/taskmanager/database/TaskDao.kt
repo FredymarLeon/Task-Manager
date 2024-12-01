@@ -21,7 +21,7 @@ interface TaskDao {
     @Delete
     suspend fun deleteTask(task: Task)
 
-    @Query("SELECT * FROM tasks_table ORDER BY id ASC")
+    @Query("SELECT * FROM tasks_table ORDER BY date ASC, time ASC")
     fun readAllTasks(): LiveData<List<Task>>
 
     @Query("SELECT * FROM tasks_table WHERE tvTaskTitle LIKE :query Or tvTaskDescription LIKE  :query")
