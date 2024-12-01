@@ -21,7 +21,6 @@ import com.projetogrupo8.taskmanager.databinding.FragmentHomeTaskManagerBinding
 import com.projetogrupo8.taskmanager.model.Task
 import com.projetogrupo8.taskmanager.viewModel.TaskViewModel
 
-
 class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), SearchView.OnQueryTextListener, MenuProvider {
 
     private var homeTaskManagerBinding: FragmentHomeTaskManagerBinding? = null
@@ -33,7 +32,7 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         homeTaskManagerBinding = FragmentHomeTaskManagerBinding.inflate(inflater, container, false)
         return binding.root
@@ -53,7 +52,6 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
         }
     }
 
-    //1.Atualizar a interface de Usuario (Observar as tarefas e atualizar o Adapter)
     private fun updateUI(task: List<Task>?){
         if (task != null){
             if (task.isNotEmpty()){
@@ -66,7 +64,6 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
         }
     }
 
-    //2.Visualização do recyclerView
     private fun setupRecyclerView(){
         taskAdapter = TaskAdapter()
         binding.rvListTasks.apply {
@@ -83,30 +80,31 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
         }
     }
 
-    //4.Função de pesquisa
     private fun searchTask(query: String){
         val searchQuery = "%$query%"
 
-        //observar tasks na lista
         tasksViewModel.searchTask(searchQuery).observe(this) {
             list -> taskAdapter.asyncListDiffer.submitList(list)
+
+            if (list.isEmpty()) {
+                binding.tvNoResults.text = String.format("\"%s\" %s", query, getString(R.string.no_results))
+                binding.tvNoResults.visibility = View.VISIBLE
+            } else {
+                binding.tvNoResults.visibility = View.GONE
+            }
         }
 
     }
 
-    //3.Metodo fornecido pelo MenuProvider para configurar menu de pequisa
-
     override fun onQueryTextSubmit(query: String?): Boolean {
-        if (query != null) {
-            searchTask(query)
-        }
-        return true
+        return false
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
         if (newText != null) {
             searchTask(newText)
         }
+
         return true
     }
 

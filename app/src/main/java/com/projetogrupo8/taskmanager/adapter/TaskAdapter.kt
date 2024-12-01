@@ -1,20 +1,22 @@
 package com.projetogrupo8.taskmanager.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.projetogrupo8.taskmanager.R
 import com.projetogrupo8.taskmanager.databinding.ItemTaskBinding
 import com.projetogrupo8.taskmanager.fragments.HomeTaskManagerFragmentDirections
 import com.projetogrupo8.taskmanager.model.Task
 
-class TaskAdapter: RecyclerView.Adapter<TaskAdapter.TaskViewHolder>(){
-    class TaskViewHolder(val itemBinding: ItemTaskBinding): RecyclerView.ViewHolder(itemBinding.root)
+class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+    class TaskViewHolder(val itemBinding: ItemTaskBinding) :
+        RecyclerView.ViewHolder(itemBinding.root)
 
-    //classe utilitária que calcula a diferença entre duas listas e gera uma lista de operações de atualização que converte a primeira lista na segunda
-    private val diffUtil = object : DiffUtil.ItemCallback<Task>(){
+    private val diffUtil = object : DiffUtil.ItemCallback<Task>() {
         override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem.id == newItem.id &&
                     oldItem.tvTaskTitle == newItem.tvTaskTitle &&
@@ -28,8 +30,6 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.TaskViewHolder>(){
 
     val asyncListDiffer = AsyncListDiffer(this, diffUtil)
 
-
-    //Metodos do Adapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         return TaskViewHolder(
             ItemTaskBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -37,27 +37,39 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.TaskViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        val currentTask = asyncListDiffer.currentList[position]         //val item = taskList[position]
+        val currentTask =
+            asyncListDiffer.currentList[position]         //val item = taskList[position]
         holder.itemBinding.tvTaskTitle.text = currentTask.tvTaskTitle
         holder.itemBinding.tvTaskDescription.text = currentTask.tvTaskDescription
-        holder.itemBinding.tvTaskDateTime.text = formatDateTime(currentTask.date, currentTask.time)
+        holder.itemBinding.tvTaskDateTime.text =
+            formatDateTime(holder.itemView.context, currentTask.date, currentTask.time)
 
         holder.itemView.setOnClickListener {
-            val direction = HomeTaskManagerFragmentDirections.actionHomeTaskManagerFragmentToEditTaskFragment(currentTask)
+            val direction =
+                HomeTaskManagerFragmentDirections.actionHomeTaskManagerFragmentToEditTaskFragment(
+                    currentTask
+                )
             it.findNavController().navigate(direction)
         }
     }
 
-    // Função para formatar data e hora
-    private fun formatDateTime(date: String?, time: String?): String {
-        return if (!date.isNullOrEmpty() && !time.isNullOrEmpty()) {
-            "$date às $time" // Exemplo: "25/11/2024 às 14:30"
-        } else if (!date.isNullOrEmpty()) {
-            date
-        } else if (!time.isNullOrEmpty()) {
-            time
-        } else {
-            "Sem data e hora"
+    private fun formatDateTime(context: Context, date: String?, time: String?): String {
+        return when {
+            !date.isNullOrEmpty() && !time.isNullOrEmpty() -> {
+                context.getString(R.string.at, date, time)
+            }
+
+            !date.isNullOrEmpty() -> {
+                date
+            }
+
+            !time.isNullOrEmpty() -> {
+                time
+            }
+
+            else -> {
+                context.getString(R.string.no_date_time)
+            }
         }
     }
 

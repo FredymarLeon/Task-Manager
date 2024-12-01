@@ -8,58 +8,72 @@
     tools:context="fragments.HomeTaskManagerFragment">
 
     <TextView
+        android:id="@+id/tvNoResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
+        android:text="@string/no_results"
+        android:textColor="@color/red"
+        android:textSize="25sp"
+        android:textStyle="italic|bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvListTask" />
+
+    <TextView
         android:id="@+id/tvListTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="10dp"
         android:text="@string/my_task"
         android:textAllCaps="true"
         android:textColor="@color/blue_dark"
-        android:textStyle="bold"
         android:textSize="18sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="8dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListTasks"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-       android:visibility="gone"
-        android:layout_marginHorizontal="15dp"
-        tools:listitem="@layout/item_task"
-        app:layout_constraintTop_toBottomOf="@id/tvListTask"
+        android:layout_marginHorizontal="8dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/tvListTask"
+        tools:listitem="@layout/item_task" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addTaskFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:clickable="true"
         android:contentDescription="@string/fabDescrTaskAdd"
-        android:focusable="true"
         android:elevation="8dp"
-        app:fabCustomSize="64dp"
+        android:focusable="true"
         android:src="@drawable/baseline_add_24"
-        app:maxImageSize="32dp"
+        app:fabCustomSize="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="32dp" />
 
     <ImageView
         android:id="@+id/emptyTasksImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/image_empy"
         android:contentDescription="@string/empty_task"
+        android:src="@drawable/image_empy"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeTaskManagerFragment"
         android:name="com.projetogrupo8.taskmanager.fragments.HomeTaskManagerFragment"
-        android:label="HomeTaskManagerFragment" >
+        android:label="HomeTaskManagerFragment">
         <action
             android:id="@+id/action_homeTaskManagerFragment_to_addTaskFragment"
             app:destination="@id/addTaskFragment" />
@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/addTaskFragment"
         android:name="com.projetogrupo8.taskmanager.fragments.AddTaskFragment"
-        android:label="AddTaskFragment" >
+        android:label="AddTaskFragment">
         <action
             android:id="@+id/action_addTaskFragment_to_homeTaskManagerFragment"
             app:destination="@id/homeTaskManagerFragment" />
@@ -31,9 +31,9 @@
         <action
             android:id="@+id/action_editTaskFragment_to_homeTaskManagerFragment"
             app:destination="@id/homeTaskManagerFragment" />
-
-        <argument android:name="task"
+        <argument
+            android:name="task"
             app:argType="com.projetogrupo8.taskmanager.model.Task"
-            app:nullable="true"/>
+            app:nullable="true" />
     </fragment>
 </navigation>

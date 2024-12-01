@@ -14,7 +14,7 @@
         <item name="colorOnSecondary">@color/white</item>
 
         <!-- Font. -->
-        <item name="fontFamily">font/monospace</item>
+        <item name="fontFamily">@font/noto_sans</item>
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>

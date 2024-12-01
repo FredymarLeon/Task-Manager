@@ -14,7 +14,7 @@ import com.projetogrupo8.taskmanager.viewModel.TaskViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
-   internal lateinit var taskViewModel: TaskViewModel
+    internal lateinit var taskViewModel: TaskViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +30,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun setupViewModel(){
+    private fun setupViewModel() {
         val taskRepository = TaskRepository(TaskDatabase(this))
         val viewModelProviderFactory = TaskViewModelFactory(application, taskRepository)
         taskViewModel = ViewModelProvider(this, viewModelProviderFactory)[TaskViewModel::class.java]
-
     }
 }

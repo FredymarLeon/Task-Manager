@@ -6,9 +6,6 @@
     <color name="blue_gray">#40646c</color>
     <color name="blue_light">#c0faff</color>
     <color name="red">#c13b34</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="purple_200">#ffBB85FC</color>
     <color name="gray_dark">#3C3B3B</color>
 
 </resources>

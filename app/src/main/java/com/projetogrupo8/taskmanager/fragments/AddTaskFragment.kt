@@ -22,13 +22,12 @@ import com.projetogrupo8.taskmanager.model.Task
 import com.projetogrupo8.taskmanager.viewModel.TaskViewModel
 import java.util.Calendar
 
-
 class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
 
-    private var addTaskBinding: FragmentAddTaskBinding? = null  //variável mutável que pode ser nula
-    private val binding get() = addTaskBinding!!    //O operador !! força o Kotlin a tratar a variável como não-nula. Se a variável for nula, o app irá lançar uma exceção
+    private var addTaskBinding: FragmentAddTaskBinding? = null
+    private val binding get() = addTaskBinding!!
 
-    private lateinit var tasksViewModel: TaskViewModel   //Declaração do VieWModel
+    private lateinit var tasksViewModel: TaskViewModel
     private lateinit var addTaskView: View
 
     private var selectedDate: String = ""
@@ -37,24 +36,20 @@ class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         addTaskBinding = FragmentAddTaskBinding.inflate(inflater, container, false)
         return binding.root
 
     }
-
-    //1.Menu
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val menuHost: MenuHost = requireActivity()  //Configurar menuHost
+        val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        tasksViewModel = (activity as MainActivity).taskViewModel       //Modelo de visualização
+        tasksViewModel = (activity as MainActivity).taskViewModel
         addTaskView = view
 
-        // Configurar listeners para os ImageViews de data e hora
         binding.ivSelectDate.setOnClickListener {
             showDatePickerDialog()
         }
@@ -73,7 +68,6 @@ class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
         DatePickerDialog(
             requireContext(),
             { _, selectedYear, selectedMonth, selectedDay ->
-                // Atualizar a variável e o TextView correspondente
                 selectedDate = String.format(getString(R.string.data_format), selectedDay, selectedMonth + 1, selectedYear)
                 binding.tvSelectedDate.text = selectedDate
             },
@@ -89,17 +83,14 @@ class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
         TimePickerDialog(
             requireContext(),
             { _, selectedHour, selectedMinute ->
-                // Atualizar a variável e o TextView correspondente
+
                 selectedTime = String.format(getString(R.string.time_format), selectedHour, selectedMinute)
                 binding.tvSelectedTime.text = selectedTime
             },
-            hour, minute, true // Use `false` para formato AM/PM
+            hour, minute, true
         ).show()
     }
 
-
-
-    //2.Função para adicionar tarefa: fun addTask | Mostar Toast
     private fun addTask(view: View){
         val taskTitle = binding.etAddTaskTitle.text.toString().trim()
         val taskDesc = binding.etAddTaskDescription.text.toString().trim()
@@ -119,7 +110,6 @@ class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
         }
     }
 
-    //3.Funções do MenuProvider
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menu.clear()
         menuInflater.inflate(R.menu.menu_add_task,menu)

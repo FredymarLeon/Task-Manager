@@ -9,9 +9,10 @@ import com.projetogrupo8.taskmanager.model.Task
 @Database(
     entities = [Task::class],
     version = 1,
-    exportSchema = false)
+    exportSchema = false
+)
 
-abstract class TaskDatabase: RoomDatabase() {
+abstract class TaskDatabase : RoomDatabase() {
 
     abstract fun getTaskDao(): TaskDao
 
