@@ -120,7 +120,7 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
             { _, selectedHour, selectedMinute ->
                 selectedTime =
                     String.format(getString(R.string.time_format), selectedHour, selectedMinute)
-                binding.tvSelectedDate.text = selectedTime
+                binding.tvSelectedTime.text = selectedTime
             },
             hour, minute, true
         )
