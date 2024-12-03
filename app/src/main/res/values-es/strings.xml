@@ -13,9 +13,7 @@
     <string name="categories">Categorías</string>
     <string name="my_task">Mis Tareas</string>
     <string name="fabDescrTaskAdd">Botón para crear nueva tarea</string>
-    <string name="insert_title">Por favor ingrese el título de la tarea</string>
     <string name="empty_task">Imagen de lista de tareas vacía</string>
-    <string name="no_date_time">Sin fecha y hora</string>
     <string name="no_results">no encontrado</string>
     <string name="at">%1$s a las %2$s</string>
 
@@ -24,13 +22,13 @@
     <string name="enter_title">Ingresa el título</string>
     <string name="enter_description">Ingresa la descripción</string>
     <string name="saved_task">Tarea guardada</string>
-    <string name="task_title_and_description">Por favor, ingresa el título y la descripción de la tarea</string>
-    <string name="select_date">Seleccionar fecha</string>
-    <string name="select_time">Seleccionar hora</string>
-    <string name="date_not_select"> </string>
-    <string name="time_not_select"> </string>
+    <string name="task_title_and_description">Por favor, ingresa el título y la descripción de la tarea.</string>
+    <string name="task_date_required">La fecha de la tarea es obligatoria.</string>
+    <string name="task_time_required">La hora de la tarea es obligatoria.</string>
+    <string name="select_date">Seleccione la fecha</string>
+    <string name="select_time">Seleccione la hora</string>
     <string name="time_format">%02d:%02d</string>
-    <string name="data_format">%02d/%02d/%04d</string>
+    <string name="data_format">%04d/%02d/%02d</string>
 
     <!--item_task    -->
     <string name="date_time">Fecha y Hora</string>
@@ -40,9 +38,12 @@
     <!--    fragment_edit_task-->
     <string name="fabDescrTaskEdit">Botón para guardar tarea editada</string>
     <string name="edit_task">Editar Tarea</string>
+    <string name="insert_title">Ingresa un título</string>
+    <string name="date_select"> </string>
+    <string name="time_select"> </string>
     <string name="confirm_edit">Tarea guardada</string>
-    <string name="set_Title">¿Estás seguro?</string>
-    <string name="set_Message">¿Eliminar Tarea?</string>
+    <string name="set_Message">¿Estás seguro?</string>
+    <string name="set_Title">Eliminar Tarea</string>
     <string name="set_Positive_Button">EXCLUIR</string>
     <string name="set_Negative_Button">CANCELAR</string>
     <string name="confirm_task_removed">La tarea ha sido eliminada</string>

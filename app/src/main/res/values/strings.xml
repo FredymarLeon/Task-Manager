@@ -14,7 +14,6 @@
     <string name="my_task">Minhas Tarefas</string>
     <string name="fabDescrTaskAdd">Botão para criar nova tarefa</string>
     <string name="empty_task">Imagem de lista de tarefas vazia</string>
-    <string name="no_date_time">Sem data e hora</string>
     <string name="no_results">não encontrado</string>
     <string name="at">%1$s ás %2$s</string>
 
@@ -22,12 +21,12 @@
     <string name="title_add_new_task">Nova Tarefa</string>
     <string name="enter_title">Digite o título</string>
     <string name="enter_description">Insira a descrição</string>
-    <string name="insert_title">Por Favor, insira o título da tarefa</string>
     <string name="saved_task">Tarefa salva</string>
     <string name="task_title_and_description">Por favor insira o título e a descrição da tarefa</string>
+    <string name="task_date_required">A data da tarefa é obrigatória.</string>
+    <string name="task_time_required">O horário é obrigatório.</string>
     <string name="select_date">Selecione a data</string>
-    <string name="date_not_select"> </string>
-    <string name="time_not_select"> </string>
+    <string name="select_time">Selecione a hora</string>
     <string name="time_format">%02d:%02d</string>
     <string name="data_format">%04d/%02d/%02d</string>
 
@@ -39,11 +38,13 @@
     <!--    fragment_edit_task-->
     <string name="fabDescrTaskEdit">Botão para salvar tarefa editada</string>
     <string name="edit_task">Editar Tarefa</string>
+    <string name="insert_title">Digite um título</string>
+    <string name="date_select"> </string>
+    <string name="time_select"> </string>
     <string name="confirm_edit">Tarefa guardada</string>
-    <string name="set_Title">Vôce tem certeza?</string>
-    <string name="set_Message">Remover Tarefa?</string>
+    <string name="set_Message">Vôce tem certeza?</string>
+    <string name="set_Title">Remover Tarefa</string>
     <string name="set_Positive_Button">EXCLUIR</string>
     <string name="set_Negative_Button">CANCELAR</string>
     <string name="confirm_task_removed">Tarefa foi removida</string>
-    <string name="select_time">Selecione a hora</string>
 </resources>

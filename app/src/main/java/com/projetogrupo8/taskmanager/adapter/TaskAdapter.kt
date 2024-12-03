@@ -38,7 +38,7 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val currentTask =
-            asyncListDiffer.currentList[position]         //val item = taskList[position]
+            asyncListDiffer.currentList[position]
         holder.itemBinding.tvTaskTitle.text = currentTask.tvTaskTitle
         holder.itemBinding.tvTaskDescription.text = currentTask.tvTaskDescription
         holder.itemBinding.tvTaskDateTime.text =
@@ -53,24 +53,9 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
         }
     }
 
-    private fun formatDateTime(context: Context, date: String?, time: String?): String {
-        return when {
-            !date.isNullOrEmpty() && !time.isNullOrEmpty() -> {
-                context.getString(R.string.at, date, time)
-            }
+    private fun formatDateTime(context: Context, date: String, time: String): String {
+        return context.getString(R.string.at, date, time)
 
-            !date.isNullOrEmpty() -> {
-                date
-            }
-
-            !time.isNullOrEmpty() -> {
-                time
-            }
-
-            else -> {
-                context.getString(R.string.no_date_time)
-            }
-        }
     }
 
     override fun getItemCount(): Int {

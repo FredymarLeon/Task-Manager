@@ -15,22 +15,20 @@
     <string name="fabDescrTaskAdd">Button to create new task</string>
     <string name="empty_task">Thunder</string>
     <string name="no_results">no found</string>
-    <string name="no_date_time">No date and time</string>
     <string name="at">%1$s at %2$s</string>
 
     <!--    fragment_add_task-->
     <string name="title_add_new_task">New Task</string>
     <string name="enter_title">Enter title</string>
     <string name="enter_description">Enter description</string>
-    <string name="insert_title">Please enter the task title</string>
     <string name="saved_task">Saved task</string>
     <string name="task_title_and_description">Please enter the task title and description</string>
-    <string name="select_date">Select the date</string>
-    <string name="select_time">Select the time</string>
-    <string name="date_not_select"> </string>
-    <string name="time_not_select"> </string>
+    <string name="task_date_required">The task date is mandatory.</string>
+    <string name="task_time_required">Task time is mandatory.</string>
+    <string name="select_date">Select a date</string>
+    <string name="select_time">Select a time</string>
     <string name="time_format">%02d:%02d</string>
-    <string name="data_format">%02d/%02d/%04d</string>
+    <string name="data_format">%04d/%02d/%02d</string>
 
     <!--item_task    -->
     <string name="date_time">Date and Time</string>
@@ -41,9 +39,12 @@
     <!--    fragment_edit_task-->
     <string name="fabDescrTaskEdit">Button to save edited task</string>
     <string name="edit_task">Edit Task</string>
+    <string name="insert_title">Enter title</string>
+    <string name="time_select"> </string>
+    <string name="date_select"> </string>
     <string name="confirm_edit">Saved task</string>
-    <string name="set_Title">Are you sure</string>
-    <string name="set_Message">Remove Task</string>
+    <string name="set_Message">Are you sure?</string>
+    <string name="set_Title">Remove Task</string>
     <string name="set_Positive_Button">EXCLUDE</string>
     <string name="set_Negative_Button">Cancel</string>
     <string name="confirm_task_removed">Task has been removed</string>

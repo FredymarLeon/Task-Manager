@@ -60,8 +60,8 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
         selectedDate = currentTask.date
         selectedTime = currentTask.time
 
-        binding.tvSelectedDate.text = selectedDate.ifEmpty { getString(R.string.date_not_select) }
-        binding.tvSelectedTime.text = selectedTime.ifEmpty { getString(R.string.time_not_select) }
+        binding.tvSelectedDate.text = selectedDate.ifEmpty { getString(R.string.date_select) }
+        binding.tvSelectedTime.text = selectedTime.ifEmpty { getString(R.string.time_select) }
 
         binding.ivSelectDate.setOnClickListener {
             showDatePickerDialog()
@@ -102,7 +102,8 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
             { _, selectedYear, selectedMonth, selectedDay ->
 
                 val dateFormat = getString(R.string.data_format)
-                selectedDate = String.format(dateFormat, selectedYear, selectedMonth + 1, selectedDay)
+                selectedDate =
+                    String.format(dateFormat, selectedYear, selectedMonth + 1, selectedDay)
                 binding.tvSelectedDate.text = selectedDate
             },
             year, month, day

@@ -30,8 +30,8 @@ class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
     private lateinit var tasksViewModel: TaskViewModel
     private lateinit var addTaskView: View
 
-    private var selectedDate: String = ""
-    private var selectedTime: String = ""
+    private var selectedDate: String? = null
+    private var selectedTime: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +41,7 @@ class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
         return binding.root
 
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -69,13 +70,17 @@ class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
             requireContext(),
             { _, selectedYear, selectedMonth, selectedDay ->
 
-                selectedDate = String.format(getString(R.string.data_format), selectedYear, selectedMonth + 1, selectedDay)
+                selectedDate = String.format(
+                    getString(R.string.data_format),
+                    selectedYear,
+                    selectedMonth + 1,
+                    selectedDay
+                )
                 binding.tvSelectedDate.text = selectedDate
             },
             year, month, day
         ).show()
     }
-
 
     private fun showTimePickerDialog() {
         val calendar = Calendar.getInstance()
@@ -86,44 +91,72 @@ class AddTaskFragment : Fragment(R.layout.fragment_add_task), MenuProvider {
             requireContext(),
             { _, selectedHour, selectedMinute ->
 
-                selectedTime = String.format(getString(R.string.time_format), selectedHour, selectedMinute)
+                selectedTime =
+                    String.format(getString(R.string.time_format), selectedHour, selectedMinute)
                 binding.tvSelectedTime.text = selectedTime
             },
             hour, minute, true
         ).show()
     }
 
-    private fun addTask(view: View){
+    private fun addTask(view: View) {
         val taskTitle = binding.etAddTaskTitle.text.toString().trim()
         val taskDesc = binding.etAddTaskDescription.text.toString().trim()
 
-        if (taskTitle.isNotEmpty()){
-            val task = Task(
-                0, taskTitle, taskDesc,
-                date = selectedDate,
-                time = selectedTime
-            )
-            tasksViewModel.addTask(task)
 
-            Toast.makeText(addTaskView.context, getString(R.string.saved_task), Toast.LENGTH_SHORT).show()
-            view.findNavController().popBackStack(R.id.homeTaskManagerFragment, false)
-        } else{
-            Toast.makeText(addTaskView.context, getString(R.string.task_title_and_description), Toast.LENGTH_SHORT).show()
+        when {
+            taskTitle.isEmpty() -> {
+                Toast.makeText(
+                    addTaskView.context,
+                    getString(R.string.task_title_and_description),
+                    Toast.LENGTH_SHORT
+                ).show()
+                return
+            }
+
+            selectedDate.isNullOrEmpty() -> {
+                Toast.makeText(
+                    addTaskView.context,
+                    getString(R.string.task_date_required),
+                    Toast.LENGTH_SHORT
+                ).show()
+                return
+            }
+
+            selectedTime.isNullOrEmpty() -> {
+                Toast.makeText(
+                    addTaskView.context,
+                    getString(R.string.task_time_required),
+                    Toast.LENGTH_SHORT
+                ).show()
+                return
+            }
         }
+        val task = Task(
+            0, taskTitle, taskDesc,
+            date = selectedDate!!,
+            time = selectedTime!!
+        )
+        tasksViewModel.addTask(task)
+
+        Toast.makeText(addTaskView.context, getString(R.string.saved_task), Toast.LENGTH_SHORT)
+            .show()
+        view.findNavController().popBackStack(R.id.homeTaskManagerFragment, false)
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menu.clear()
-        menuInflater.inflate(R.menu.menu_add_task,menu)
+        menuInflater.inflate(R.menu.menu_add_task, menu)
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        return when(menuItem.itemId){
+        return when (menuItem.itemId) {
             R.id.saveMenu -> {
                 addTask(addTaskView)
                 true
+            } else -> {
+                false
             }
-            else -> false
         }
     }
 

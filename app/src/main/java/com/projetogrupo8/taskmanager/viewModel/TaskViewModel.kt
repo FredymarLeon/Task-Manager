@@ -11,7 +11,7 @@ class TaskViewModel (app: Application, private val taskRepository: TaskRepositor
 
     fun addTask(task: Task) =
         viewModelScope.launch {
-            taskRepository.insertTask(task)
+            taskRepository.addTask(task)
         }
 
     fun deleteTask(task: Task) =

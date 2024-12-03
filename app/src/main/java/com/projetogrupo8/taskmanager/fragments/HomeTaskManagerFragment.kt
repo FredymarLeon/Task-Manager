@@ -21,7 +21,8 @@ import com.projetogrupo8.taskmanager.databinding.FragmentHomeTaskManagerBinding
 import com.projetogrupo8.taskmanager.model.Task
 import com.projetogrupo8.taskmanager.viewModel.TaskViewModel
 
-class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), SearchView.OnQueryTextListener, MenuProvider {
+class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager),
+    SearchView.OnQueryTextListener, MenuProvider {
 
     private var homeTaskManagerBinding: FragmentHomeTaskManagerBinding? = null
     private val binding get() = homeTaskManagerBinding!!
@@ -52,9 +53,9 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
         }
     }
 
-    private fun updateUI(task: List<Task>?){
-        if (task != null){
-            if (task.isNotEmpty()){
+    private fun updateUI(task: List<Task>?) {
+        if (task != null) {
+            if (task.isNotEmpty()) {
                 binding.emptyTasksImage.visibility = View.GONE
                 binding.rvListTasks.visibility = View.VISIBLE
             } else {
@@ -64,36 +65,29 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
         }
     }
 
-    private fun setupRecyclerView(){
+    private fun setupRecyclerView() {
         taskAdapter = TaskAdapter()
         binding.rvListTasks.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             setHasFixedSize(true)
             adapter = taskAdapter
         }
 
         activity?.let {
-            tasksViewModel.readAllTasks().observe(viewLifecycleOwner){task ->
+            tasksViewModel.readAllTasks().observe(viewLifecycleOwner) { task ->
                 taskAdapter.asyncListDiffer.submitList(task)
                 updateUI(task)
             }
         }
     }
 
-    private fun searchTask(query: String){
+    private fun searchTask(query: String) {
         val searchQuery = "%$query%"
 
-        tasksViewModel.searchTask(searchQuery).observe(this) {
-                list -> taskAdapter.asyncListDiffer.submitList(list)
-
-            if (list.isEmpty()) {
-                binding.tvNoResults.text = String.format("\"%s\" %s", query, getString(R.string.no_results))
-                binding.tvNoResults.visibility = View.VISIBLE
-            } else {
-                binding.tvNoResults.visibility = View.GONE
-            }
+        tasksViewModel.searchTask(searchQuery).observe(this) { list ->
+            taskAdapter.asyncListDiffer.submitList(list)
         }
-
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -104,7 +98,6 @@ class HomeTaskManagerFragment : Fragment(R.layout.fragment_home_task_manager), S
         if (newText != null) {
             searchTask(newText)
         }
-
         return true
     }
 
